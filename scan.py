@@ -3,7 +3,7 @@ import xmltodict
 from graphviz import Digraph
 
 def scan_network():
-    nmap_output = subprocess.run(["nmap", "-oX", "./sP", "192.168.12.0/24"], capture_output=True)
+    nmap_output = subprocess.run(["nmap", "-oX", "-", "-sP", "192.168.12.0/24"], capture_output=True)
     print(nmap_output.stdout.decode())
     nmap_data = xmltodict.parse(nmap_output.stdout.decode())
     graph = Digraph()
